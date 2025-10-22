@@ -1,0 +1,27 @@
+<div class="main-container">
+    <div class="text">
+        <h1>Причина номер 4</h1>
+        <h2 class="subtitle">У Кирюши красивый голос</h2>
+    </div>
+    
+    <div class="microphone-section">
+        <div class="microphone-container">
+            <div class="microphone" (click)="toggleMicrophone()" [class.recording]="isRecording">
+                <div class="microphone-body">
+                    <div class="microphone-grill"></div>
+                    <div class="microphone-stand"></div>
+                </div>
+            </div>
+            
+            <div class="girl" [class.crying]="isRecording">
+                <img class="kir-girl" src="/assets/matvey-girl.jpg" alt="Девочка">
+                
+                @if(isRecording){<div class="happy-glow"></div>}
+            </div>
+        </div>
+        
+        <div class="message">
+            <p>Голос Кирюши так прекрасен, что хочется плакать от счастья! 😭🎤</p>
+        </div>
+    </div>
+</div>

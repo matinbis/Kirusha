@@ -1,0 +1,22 @@
+<div class="main-container">
+    <h1>Самая главная причина</h1>
+    
+    <div class="reveal-section">
+        <div class="text-animation">
+            <span class="hidden-text" #hiddenText>БОЛЬШАЯ ДОБРАЯ УЛЫБКА</span>
+            <span class="animated-text" #animatedText></span>
+        </div>
+        
+        <div class="smiley-container" #smileyContainer>
+            <div class="face">
+                <div class="eye left-eye"></div>
+                <div class="eye right-eye"></div>
+                <div class="smile"></div>
+            </div>
+        </div>
+        
+        <button class="reveal-btn" (click)="startReveal()" [disabled]="isAnimating">
+            {{ isAnimating ? 'Открываем...' : 'Узнать самую главную причину' }}
+        </button>
+    </div>
+</div>

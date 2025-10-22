@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;700;800&display=swap');
+
+*{
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.animation-container {
+    position: relative;
+    height: 400px;
+    margin: 40px 0;
+    overflow: hidden;
+}
+
+.main-container{
+    background-image: url("/assets/broke_pejot.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    flex-direction: column;
+    padding: 30px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.text{
+    text-align: center;
+    font-size: 0.7em;
+    color: #ffffff; /* Черный текст */
+    background: none; /* Убираем градиент для текста */
+    -webkit-text-fill-color: #ffffff; /* Черный цвет */
+    padding: 5px 25px;
+    border-radius: 18px;
+    line-height: 1.3;
+    font-weight: 100;
+    
+    animation: floatCard 4s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    
+    background: rgba(61, 4, 4, 0.315);
+    backdrop-filter: blur(10px);
+    margin-bottom: 10px;
+
+    h2{
+        padding-top: 10px;
+        font-size: 1.3rem;
+    }
+}
+
+.pejot_matvey{
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 250px;
+    align-items: center;
+    width: auto;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+
+.road {
+    border-radius: 20px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 20px,
+            #f1c40f 20px,
+            #f1c40f 40px
+        );
+        transform: translateY(-50%);
+    }
+}
+
+.car {
+    position: absolute;
+    top: 25%;
+    transform: translateY(-50%);
+    transition: transform 0.1s ease-out;
+    z-index: 2;
+    
+    img {
+        width: 120px;
+        height: auto;
+        filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.5));
+    }
+}
+
+.car-left {
+    left: 20%;
+    
+    img {
+        transform: scaleX(-1); // Зеркально для левой машины
+    }
+}
+
+.car-right {
+    right: 20%;
+}
+
+.crash-effect {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(255,100,100,0.8) 0%, transparent 70%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 50%;
+    filter: blur(10px);
+}
+
+.scroll-hint {
+    text-align: center;
+    margin-top: 20px;
+    
+    span {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9em;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        animation: pulseHint 2s ease-in-out infinite;
+    }
+}
+
+/* Анимации */
+@keyframes crashFlash {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes carShake {
+    0%, 100% {
+        transform: translateY(-50%) translateX(var(--car-x, 0));
+    }
+    25% {
+        transform: translateY(-50%) translateX(calc(var(--car-x, 0) + 5px)) rotate(2deg);
+    }
+    50% {
+        transform: translateY(-50%) translateX(calc(var(--car-x, 0) - 3px)) rotate(-1deg);
+    }
+    75% {
+        transform: translateY(-50%) translateX(calc(var(--car-x, 0) + 2px)) rotate(1deg);
+    }
+}
+
+@keyframes pulseHint {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .animation-container {
+        height: 300px;
+    }
+    
+    .car img {
+        width: 80px;
+    }
+    
+    .car-left {
+        left: 10%;
+    }
+    
+    .car-right {
+        right: 10%;
+    }
+}
+
+@media (max-width: 480px) {
+    .animation-container {
+        height: 250px;
+    }
+    
+    .car img {
+        width: 100px;
+    }
+}
+
+p {
+    font-size: 1.4em;
+    color: white;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    font-weight: 500;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: 200% auto;
+    padding: 15px 20px;
+    
+    /* Добавляем фон для читаемости */
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    
+    /* Анимация */
+    animation: gradientShift 3s ease-in-out infinite;
+    
+    /* Улучшаем тень текста */
+    text-shadow: 
+        1px 1px 3px rgba(0, 0, 0, 0.8),
+        0 0 10px rgba(0, 0, 0, 0.5);
+}

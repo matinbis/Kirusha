@@ -1,0 +1,34 @@
+<div class="main-container">
+    <div class="text">
+        <h1>Причина номер 1 <br> Кирюша красивый</h1>
+        <h2>Эксперимент на тесте красоты</h2>
+    </div>
+    
+    <div class="test">
+        <div class="ark">
+            <img src="/assets/ark.jpg" alt="Обычный человек">
+        </div>
+        <div class="kir">
+            <img src="/assets/kir.png" alt="Кирюша">
+        </div>
+    </div>
+
+    @if(showCounters){
+    <div class="counter-container">
+        <div class="counter counter-ark" [ngClass]="getArkCounterClass()">
+            <div class="counter-value">{{ arkValue }}</div>
+        </div>
+        
+        <div class="counter counter-kir" [ngClass]="getKirCounterClass()">
+            <div class="counter-value">{{ kirValue }}</div>
+        </div>
+    </div>
+    }
+
+        <button 
+        (click)="startComparison()" 
+        [disabled]="isButtonDisabled"
+        [class.disabled]="isButtonDisabled">
+        {{ buttonText }}
+    </button>
+</div>

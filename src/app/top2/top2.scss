@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;700;800&display=swap');
+
+*{
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.main-container{
+    background-image: url("/assets/kir-with-girl.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    flex-direction: column;
+    padding: 30px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.text{
+    text-align: center;
+    font-size: 0.7em;
+    color: #ffffff; /* Черный текст */
+    background: none; /* Убираем градиент для текста */
+    -webkit-text-fill-color: #ffffff; /* Черный цвет */
+    padding: 5px 25px;
+    border-radius: 18px;
+    line-height: 1.3;
+    font-weight: 100;
+    
+    animation: floatCard 4s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    
+    background: rgba(8, 23, 238, 0.315);
+    backdrop-filter: blur(10px);
+    margin-bottom: 10px;
+
+    h2{
+        padding-top: 10px;
+        font-size: 1.3rem;
+    }
+}
+
+
+.microphone-section {
+    text-align: center;
+    margin: 40px 0;
+    position: relative;
+    z-index: 3;
+}
+
+.microphone-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+.microphone {
+    position: relative;
+    width: 120px;
+    height: 200px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2;
+    margin-top: 360px;
+    
+    &:hover {
+        transform: scale(1.05);
+    }
+    
+    &.recording {
+        animation: microphonePulse 2s ease-in-out infinite;
+        
+        .microphone-body {
+            background: linear-gradient(45deg, #FF6B6B, #FFE66D);
+            box-shadow: 
+                0 0 30px rgba(255, 107, 107, 0.6),
+                0 0 60px rgba(255, 230, 109, 0.4);
+        }
+    }
+}
+
+.microphone-body {
+    position: relative;
+    width: 80px;
+    height: 120px;
+    background: linear-gradient(45deg, #666, #999);
+    border-radius: 40px 40px 10px 10px;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.3),
+        inset 0 -5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.microphone-grill {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    right: 10px;
+    height: 60px;
+    background: 
+        radial-gradient(circle at 50% 50%, transparent 30%, #333 31%, #333 40%, transparent 41%),
+        linear-gradient(90deg, transparent 49%, #333 49%, #333 51%, transparent 51%),
+        linear-gradient(0deg, transparent 49%, #333 49%, #333 51%, transparent 51%);
+    border-radius: 20px;
+}
+
+.microphone-stand {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 60px;
+    background: linear-gradient(90deg, #888, #AAA);
+    border-radius: 5px;
+}
+
+.sound-waves {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    .wave {
+        position: absolute;
+        border: 2px solid #FF6B6B;
+        border-radius: 50%;
+        animation: soundWave 2s linear infinite;
+        
+        &:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            animation-delay: 0s;
+        }
+        
+        &:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            animation-delay: 0.5s;
+        }
+        
+        &:nth-child(3) {
+            width: 200px;
+            height: 200px;
+            animation-delay: 1s;
+        }
+    }
+}
+
+.girl {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.5s ease;
+    z-index: 1;
+    
+    img {
+        width: 20%;
+        margin-top: 110px;
+        height: auto;
+        filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.3));
+        transition: all 0.5s ease;
+    }
+    
+    &.crying {
+        top: -120px;
+        
+        img {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 15px rgba(255, 107, 107, 0.5));
+        }
+    }
+}
+
+.tears {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    .tear {
+        position: absolute;
+        width: 4px;
+        height: 8px;
+        background: linear-gradient(to bottom, #4ECDC4, #00a8ff);
+        border-radius: 50%;
+        animation: tearDrop 1.5s ease-in infinite;
+        
+        &:nth-child(1) {
+            left: -15px;
+            animation-delay: 0s;
+        }
+        
+        &:nth-child(2) {
+            left: 0;
+            animation-delay: 0.3s;
+        }
+        
+        &:nth-child(3) {
+            left: 15px;
+            animation-delay: 0.6s;
+        }
+    }
+}
+
+.message {
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: fadeIn 0.5s ease-out;
+    
+    p {
+        font-size: 1.3em;
+        color: white;
+        margin: 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        font-weight: 500;
+    }
+}
+
+.hint {
+    p {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.1em;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        animation: pulseHint 2s ease-in-out infinite;
+    }
+}
+
+/* Анимации */
+@keyframes microphonePulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes soundWave {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseHint {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .microphone {
+        width: 100px;
+        height: 180px;
+    }
+    
+    .microphone-body {
+        width: 70px;
+        height: 100px;
+    }
+    
+    .girl img {
+        width: 200px;
+        border-radius: 50%;
+    }
+    
+    .message p {
+        font-size: 1.1em;
+    }
+}

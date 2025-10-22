@@ -1,0 +1,49 @@
+<div class="main-container">
+    <div class="text">
+        <h1>Причина номер 2</h1>
+        <h2 class="subtitle">Кирюша обожает животных <br> и они его тоже!</h2>
+    </div>
+    
+    <div class="video-player">
+        <div class="video-container">
+            <video #videoPlayer class="video" poster="/assets/naked_kir.jpg">
+                <source src="/assets/Kir_with_animals.mp4" type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+            
+            <!-- Элементы управления -->
+            <div class="video-controls">
+                <button class="control-btn play-pause" (click)="togglePlay()">
+                    @if(!isPlaying){<span class="play-icon">▶</span>}
+                    @else{<span class="pause-icon">❚❚</span>}
+                </button>
+                
+                <div class="progress-container">
+                    <div class="progress-bar" (click)="seek($event)">
+                        <div class="progress-fill" [style.width.%]="progress"></div>
+                        <div class="progress-thumb" [style.left.%]="progress"></div>
+                    </div>
+                </div>
+                
+                <div class="time-display">
+                    {{ currentTime }} / {{ duration }}
+                </div>
+                
+                <button class="control-btn volume-btn" (click)="toggleMute()">
+                    @if(!isMuted){<span class="volume-icon">🔊</span>}
+                    @else{<span class="volume-icon">🔇</span>}
+                </button>
+                
+                <button class="control-btn fullscreen-btn" (click)="toggleFullscreen()">
+                    <span class="fullscreen-icon">⛶</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Информация о видео -->
+        <div class="video-info">
+            <h3>Кирюша и его пушистые друзья</h3>
+            <p>Посмотрите, как животные тянутся к Кирюше! Это доказывает его добрую энергетику.</p>
+        </div>
+    </div>
+</div>
