@@ -11,8 +11,8 @@ export class Top2 {
   private afterAudio: HTMLAudioElement;
 
   constructor() {
-    this.audio = new Audio('/assets/kirusha-voice.mp3');
-    this.afterAudio = new Audio('/assets/girl-cry.mp3'); // ← второй звук (вздох/плач)
+    this.audio = new Audio('/Kirusha/assets/kirusha-voice.mp3');
+    this.afterAudio = new Audio('/Kirusha/assets/girl-cry.mp3'); // ← второй звук (вздох/плач)
   }
 
   toggleMicrophone() {
