@@ -54,3 +54,12 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Debug assets location
+        run: |
+            echo "=== Checking ALL assets ==="
+            find dist -name "*.png" -type f
+            echo "=== Browser folder content ==="
+            ls -la dist/Kirusha/browser/browser/
+            echo "=== Assets folder content ==="
+            ls -la dist/Kirusha/browser/browser/assets/ 2>/dev/null || echo "No assets folder"
