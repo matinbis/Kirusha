@@ -44,20 +44,18 @@ jobs:
           echo "=== Checking for nested browser folder ==="
           ls -la dist/Kirusha/browser/browser/ 2>/dev/null || echo "No nested browser folder"
         
+      - name: Check assets content
+        run: |
+          echo "=== Assets folder files ==="
+          ls -la dist/Kirusha/browser/browser/assets/
+          echo "=== All PNG files in build ==="
+          find dist -name "*.png" -type f
+          
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Пробуй оба варианта по очереди:
-          path: dist/Kirusha/browser/browser  # ← СНАЧАЛА попробуй этот
-          # path: dist/Kirusha/browser        # ← потом этот если выше не сработает
+          path: dist/Kirusha/browser/browser
           
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-      - name: Check assets content
-        run: |
-            echo "=== Assets folder files ==="
-            ls -la dist/Kirusha/browser/browser/assets/
-            echo "=== All PNG files in build ==="
-            find dist -name "*.png" -type f
