@@ -55,11 +55,9 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-      - name: Debug assets location
+      - name: Check assets content
         run: |
-            echo "=== Checking ALL assets ==="
+            echo "=== Assets folder files ==="
+            ls -la dist/Kirusha/browser/browser/assets/
+            echo "=== All PNG files in build ==="
             find dist -name "*.png" -type f
-            echo "=== Browser folder content ==="
-            ls -la dist/Kirusha/browser/browser/
-            echo "=== Assets folder content ==="
-            ls -la dist/Kirusha/browser/browser/assets/ 2>/dev/null || echo "No assets folder"
