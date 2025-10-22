@@ -34,17 +34,22 @@ jobs:
         run: |
           npm install
           npm run build -- --base-href "/Kirusha/"
-          
-      - name: List files for debug
-        run: ls -la dist/Kirusha/browser/
-        
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+    
+      - name: Find correct build path
+        run: |
+          echo "=== Looking for index.html ==="
+          find dist -name "index.html" -type f
+          echo "=== Browser folder structure ==="
+          ls -la dist/Kirusha/browser/
+          echo "=== Checking for nested browser folder ==="
+          ls -la dist/Kirusha/browser/browser/ 2>/dev/null || echo "No nested browser folder"
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/Kirusha/browser
+          # Пробуй оба варианта по очереди:
+          path: dist/Kirusha/browser/browser  # ← СНАЧАЛА попробуй этот
+          # path: dist/Kirusha/browser        # ← потом этот если выше не сработает
           
       - name: Deploy to GitHub Pages
         id: deployment
