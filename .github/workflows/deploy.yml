@@ -1,0 +1,59 @@
+name: Deploy Angular to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+    # Шаг 1: Получить код из репозитория
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    # Шаг 2: Установить Node.js
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    # Шаг 3: Установить зависимости
+    - name: Install dependencies
+      run: npm install
+      
+    # Шаг 4: Собрать проект
+    - name: Build Angular project
+      run: npm run build -- --base-href "/Kirusha/"
+      
+    # Шаг 5: Настроить GitHub Pages
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+      
+    # Шаг 6: Загрузить артефакты
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: ./dist/Kirusha/browser  # ПУТЬ ИЗ angular.json
+          
+    # Шаг 7: Деплой
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4

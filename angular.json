@@ -31,7 +31,9 @@
             ],
             "styles": [
               "src/styles.scss"
-            ]
+            ],
+            "outputPath": "dist/Kirusha/browser",
+            "baseHref": "/Kirusha/"
           },
           "configurations": {
             "production": {
